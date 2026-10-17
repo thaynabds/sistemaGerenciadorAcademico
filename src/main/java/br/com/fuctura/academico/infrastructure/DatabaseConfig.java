@@ -34,6 +34,18 @@ public final class DatabaseConfig {
     }
 
     static DatabaseConfig montar(Map<String, String> ambiente, Properties arquivo) {
+        String perfil = primeiroInformado(ambiente.get("DB_PROFILE"), arquivo.getProperty("db.profile"), "");
+        if ("h2".equalsIgnoreCase(perfil)) {
+            try {
+                Class.forName("org.h2.Driver");
+            } catch (ClassNotFoundException e) {
+                throw new IllegalStateException("Driver H2 ausente no artefato.", e);
+            }
+            return new DatabaseConfig(
+                    "jdbc:h2:mem:academico;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1",
+                    "sa",
+                    "");
+        }
         String url = primeiroInformado(
                 ambiente.get("DB_URL"),
                 arquivo.getProperty("db.url"),

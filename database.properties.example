@@ -1,3 +1,15 @@
-db.url=jdbc:postgresql://ep-odd-recipe-aeoa1pqy-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channelBinding=require
-db.user=neondb_owner
+# Copie este arquivo para database.properties e preencha a senha.
+# database.properties não vai para o Git.
+
+# PostgreSQL local (padrão)
+db.url=jdbc:postgresql://localhost:5432/academico
+db.user=postgres
 db.password=
+
+# PostgreSQL no Neon (opcional) - troque as linhas acima por estas:
+# db.url=jdbc:postgresql://ep-odd-recipe-aeoa1pqy-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channelBinding=require
+# db.user=neondb_owner
+# db.password=
+
+# Banco em memória H2 para demonstração rápida, sem PostgreSQL (opcional):
+# db.profile=h2

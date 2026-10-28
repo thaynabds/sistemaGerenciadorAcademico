@@ -21,14 +21,14 @@ public final class MenuProfessores {
             ui.imprimir("        PROFESSORES");
             ui.imprimir("=================================");
             ui.imprimir("");
-            ui.imprimir("1 - Cadastrar");
-            ui.imprimir("2 - Listar");
-            ui.imprimir("3 - Buscar");
-            ui.imprimir("4 - Alterar");
-            ui.imprimir("5 - Excluir");
+            ui.imprimir("1 - Cadastrar professor");
+            ui.imprimir("2 - Listar professores");
+            ui.imprimir("3 - Buscar professor");
+            ui.imprimir("4 - Alterar professor");
+            ui.imprimir("5 - Excluir professor");
             ui.imprimir("0 - Voltar");
             ui.imprimir("");
-            opcao = ui.ler("Escolha: ");
+            opcao = ui.ler("Escolha uma opção: ");
             switch (opcao) {
                 case "1" -> ui.executar(this::cadastrar);
                 case "2" -> ui.executar(this::listar);

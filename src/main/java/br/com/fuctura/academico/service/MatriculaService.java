@@ -54,6 +54,10 @@ public class MatriculaService {
         return matriculaDao.listarAlunosDaDisciplina(disciplinaCodigo.trim());
     }
 
+    public List<SituacaoAcademica> situacaoDoAluno(String alunoMatricula) {
+        return matriculaDao.listarSituacaoDoAluno(alunoMatricula.trim());
+    }
+
     public List<SituacaoAcademica> relatorio() {
         return matriculaDao.listarRelatorio();
     }

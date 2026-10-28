@@ -31,6 +31,10 @@ public class MatriculaControlador {
         return matriculaService.listarAlunosDaDisciplina(disciplinaCodigo);
     }
 
+    public List<SituacaoAcademica> situacaoDoAluno(String alunoMatricula) {
+        return matriculaService.situacaoDoAluno(alunoMatricula);
+    }
+
     public List<SituacaoAcademica> relatorio() {
         return matriculaService.relatorio();
     }

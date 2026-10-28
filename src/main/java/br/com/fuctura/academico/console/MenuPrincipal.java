@@ -31,16 +31,16 @@ public final class MenuPrincipal {
         do {
             ui.imprimir("");
             ui.imprimir("=================================");
-            ui.imprimir("     SISTEMA ACADEMICO");
+            ui.imprimir("     SISTEMA ACADÊMICO");
             ui.imprimir("=================================");
             ui.imprimir("");
-            ui.imprimir("1 - Gerenciar Aluno");
-            ui.imprimir("2 - Gerenciar Professor");
-            ui.imprimir("3 - Gerenciar Disciplina");
-            ui.imprimir("4 - Gerenciar Matricula");
+            ui.imprimir("1 - Alunos");
+            ui.imprimir("2 - Professores");
+            ui.imprimir("3 - Disciplinas");
+            ui.imprimir("4 - Matrículas");
             ui.imprimir("0 - Sair");
             ui.imprimir("");
-            opcao = ui.ler("Escolha: ");
+            opcao = ui.ler("Escolha uma opção: ");
             switch (opcao) {
                 case "1" -> alunos.abrir();
                 case "2" -> professores.abrir();

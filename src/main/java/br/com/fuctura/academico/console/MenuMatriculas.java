@@ -1,5 +1,7 @@
 package br.com.fuctura.academico.console;
 
+import java.time.format.DateTimeFormatter;
+
 import br.com.fuctura.academico.controlador.AlunoControlador;
 import br.com.fuctura.academico.controlador.DisciplinaControlador;
 import br.com.fuctura.academico.controlador.MatriculaControlador;
@@ -7,6 +9,8 @@ import br.com.fuctura.academico.entity.Aluno;
 import br.com.fuctura.academico.entity.Disciplina;
 
 public final class MenuMatriculas {
+
+    private static final DateTimeFormatter DATA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private final ConsoleUI ui;
     private final MatriculaControlador matriculas;
@@ -30,18 +34,20 @@ public final class MenuMatriculas {
             ui.imprimir("");
             ui.imprimir("1 - Matricular aluno");
             ui.imprimir("2 - Cancelar matrícula");
-            ui.imprimir("3 - Consultar disciplinas de um aluno");
-            ui.imprimir("4 - Consultar alunos de uma disciplina");
-            ui.imprimir("5 - Relatório completo");
+            ui.imprimir("3 - Disciplinas do aluno");
+            ui.imprimir("4 - Alunos da disciplina");
+            ui.imprimir("5 - Consultar situação acadêmica");
+            ui.imprimir("6 - Relatório completo");
             ui.imprimir("0 - Voltar");
             ui.imprimir("");
-            opcao = ui.ler("Escolha: ");
+            opcao = ui.ler("Escolha uma opção: ");
             switch (opcao) {
                 case "1" -> ui.executar(this::matricular);
                 case "2" -> ui.executar(this::cancelar);
                 case "3" -> ui.executar(this::disciplinasDoAluno);
                 case "4" -> ui.executar(this::alunosDaDisciplina);
-                case "5" -> ui.executar(this::relatorio);
+                case "5" -> ui.executar(this::situacaoAcademica);
+                case "6" -> ui.executar(this::relatorio);
                 case "0" -> {
                 }
                 default -> ui.imprimir("Opção inválida.");
@@ -138,6 +144,33 @@ public final class MenuMatriculas {
         lista.forEach(aluno -> ui.imprimir(aluno.getMatricula() + " - " + aluno.getNome()));
     }
 
+    private void situacaoAcademica() {
+        ui.imprimir("");
+        ui.imprimir("=================================");
+        ui.imprimir("    SITUAÇÃO ACADÊMICA");
+        ui.imprimir("=================================");
+        ui.imprimir("");
+        Aluno aluno = alunos.buscar(ui.ler("Matrícula do aluno: "));
+        var linhas = matriculas.situacaoDoAluno(aluno.getMatricula());
+        ui.imprimir("");
+        ui.imprimir("Aluno: " + aluno.getNome());
+        ui.imprimir("Idade: " + aluno.getIdade());
+        ui.imprimir("Celular: " + aluno.getCelular());
+        ui.imprimir("Total de disciplinas: " + linhas.size());
+        ui.imprimir("");
+        if (linhas.isEmpty()) {
+            ui.imprimir("O aluno não possui matrículas.");
+            return;
+        }
+        ui.imprimir(String.format("%-22s %-20s %s", "Disciplina", "Professor", "Data"));
+        ui.imprimir("----------------------------------------------------------");
+        linhas.forEach(linha -> ui.imprimir(String.format(
+                "%-22s %-20s %s",
+                linha.disciplina(),
+                linha.professor(),
+                linha.dataMatricula().format(DATA))));
+    }
+
     private void relatorio() {
         ui.imprimir("");
         ui.imprimir("=================================");
@@ -156,6 +189,6 @@ public final class MenuMatriculas {
                 linha.aluno(),
                 linha.disciplina(),
                 linha.professor(),
-                linha.dataMatricula())));
+                linha.dataMatricula().format(DATA))));
     }
 }

@@ -3,14 +3,17 @@ package br.com.fuctura.academico.service;
 import java.util.List;
 
 import br.com.fuctura.academico.dao.AlunoDAO;
+import br.com.fuctura.academico.dao.MatriculaDAO;
 import br.com.fuctura.academico.entity.Aluno;
 
 public class AlunoService {
 
     private final AlunoDAO alunoDao;
+    private final MatriculaDAO matriculaDao;
 
-    public AlunoService(AlunoDAO alunoDao) {
+    public AlunoService(AlunoDAO alunoDao, MatriculaDAO matriculaDao) {
         this.alunoDao = alunoDao;
+        this.matriculaDao = matriculaDao;
     }
 
     public void cadastrar(Aluno aluno) {
@@ -52,7 +55,12 @@ public class AlunoService {
     }
 
     public void excluir(String matricula) {
-        if (!alunoDao.excluir(texto(matricula, "Informe a matrícula."))) {
+        String valor = texto(matricula, "Informe a matrícula.");
+        if (matriculaDao.existePorAluno(valor)) {
+            throw new IllegalArgumentException(
+                    "Não é possível excluir o aluno: ele possui matrículas. Cancele as matrículas primeiro.");
+        }
+        if (!alunoDao.excluir(valor)) {
             throw new IllegalArgumentException("Aluno não encontrado.");
         }
     }

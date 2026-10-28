@@ -66,9 +66,9 @@ public final class Application {
         try (ConsoleUI ui = new ConsoleUI()) {
             MenuPrincipal menu = new MenuPrincipal(
                     ui,
-                    new AlunoControlador(new AlunoService(alunoDao)),
-                    new ProfessorControlador(new ProfessorService(professorDao)),
-                    new DisciplinaControlador(new DisciplinaService(disciplinaDao, professorDao)),
+                    new AlunoControlador(new AlunoService(alunoDao, matriculaDao)),
+                    new ProfessorControlador(new ProfessorService(professorDao, disciplinaDao)),
+                    new DisciplinaControlador(new DisciplinaService(disciplinaDao, professorDao, matriculaDao)),
                     new MatriculaControlador(new MatriculaService(alunoDao, disciplinaDao, matriculaDao)));
             menu.abrir();
         }

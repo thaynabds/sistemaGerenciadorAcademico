@@ -2,15 +2,18 @@ package br.com.fuctura.academico.service;
 
 import java.util.List;
 
+import br.com.fuctura.academico.dao.DisciplinaDAO;
 import br.com.fuctura.academico.dao.ProfessorDAO;
 import br.com.fuctura.academico.entity.Professor;
 
 public class ProfessorService {
 
     private final ProfessorDAO professorDao;
+    private final DisciplinaDAO disciplinaDao;
 
-    public ProfessorService(ProfessorDAO professorDao) {
+    public ProfessorService(ProfessorDAO professorDao, DisciplinaDAO disciplinaDao) {
         this.professorDao = professorDao;
+        this.disciplinaDao = disciplinaDao;
     }
 
     public void cadastrar(Professor professor) {
@@ -42,7 +45,12 @@ public class ProfessorService {
     }
 
     public void excluir(String matricula) {
-        if (!professorDao.excluir(texto(matricula, "Informe a matrícula."))) {
+        String valor = texto(matricula, "Informe a matrícula.");
+        if (disciplinaDao.existePorProfessor(valor)) {
+            throw new IllegalArgumentException(
+                    "Não é possível excluir o professor: ele é responsável por disciplinas. Altere ou exclua as disciplinas primeiro.");
+        }
+        if (!professorDao.excluir(valor)) {
             throw new IllegalArgumentException("Professor não encontrado.");
         }
     }

@@ -49,11 +49,11 @@ public final class DatabaseConfig {
         String url = primeiroInformado(
                 ambiente.get("DB_URL"),
                 arquivo.getProperty("db.url"),
-                "jdbc:postgresql://ep-odd-recipe-aeoa1pqy-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channelBinding=require");
+                "jdbc:postgresql://localhost:5432/academico");
         String usuario = primeiroInformado(
                 ambiente.get("DB_USER"),
                 arquivo.getProperty("db.user"),
-                "neondb_owner");
+                "postgres");
         String senha = primeiroInformado(ambiente.get("DB_PASSWORD"), arquivo.getProperty("db.password"), "");
         if (senha.isBlank()) {
             throw new IllegalStateException(

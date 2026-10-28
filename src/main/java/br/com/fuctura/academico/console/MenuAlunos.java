@@ -21,15 +21,15 @@ public final class MenuAlunos {
             ui.imprimir("          ALUNOS");
             ui.imprimir("=================================");
             ui.imprimir("");
-            ui.imprimir("1 - Cadastrar");
-            ui.imprimir("2 - Listar");
-            ui.imprimir("3 - Buscar");
-            ui.imprimir("4 - Alterar");
-            ui.imprimir("5 - Excluir");
-            ui.imprimir("6 - Pesquisar por nome");
+            ui.imprimir("1 - Cadastrar aluno");
+            ui.imprimir("2 - Listar alunos (ordenados por nome)");
+            ui.imprimir("3 - Buscar aluno");
+            ui.imprimir("4 - Alterar aluno");
+            ui.imprimir("5 - Excluir aluno");
+            ui.imprimir("6 - Pesquisar aluno por nome");
             ui.imprimir("0 - Voltar");
             ui.imprimir("");
-            opcao = ui.ler("Escolha: ");
+            opcao = ui.ler("Escolha uma opção: ");
             switch (opcao) {
                 case "1" -> ui.executar(this::cadastrar);
                 case "2" -> ui.executar(this::listar);

@@ -67,6 +67,26 @@ public class MatriculaDAO {
         }
     }
 
+    public boolean existePorAluno(String alunoMatricula) {
+        return existeAlgum("SELECT 1 FROM matricula WHERE aluno_matricula = ?", alunoMatricula);
+    }
+
+    public boolean existePorDisciplina(String disciplinaCodigo) {
+        return existeAlgum("SELECT 1 FROM matricula WHERE disciplina_codigo = ?", disciplinaCodigo);
+    }
+
+    private boolean existeAlgum(String sql, String valor) {
+        try (Connection conexao = conexoes.abrir();
+                PreparedStatement comando = conexao.prepareStatement(sql)) {
+            comando.setString(1, valor);
+            try (ResultSet resultado = comando.executeQuery()) {
+                return resultado.next();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
     public List<Disciplina> listarDisciplinasDoAluno(String alunoMatricula) {
         String sql = """
                 SELECT d.codigo, d.nome, d.carga_horaria, d.professor_matricula
@@ -121,29 +141,47 @@ public class MatriculaDAO {
         }
     }
 
+    private static final String SITUACAO = """
+            SELECT a.nome AS aluno, d.nome AS disciplina, p.nome AS professor, m.data_matricula
+            FROM matricula m
+            INNER JOIN aluno a ON a.matricula = m.aluno_matricula
+            INNER JOIN disciplina d ON d.codigo = m.disciplina_codigo
+            INNER JOIN professor p ON p.matricula = d.professor_matricula
+            """;
+
     public List<SituacaoAcademica> listarRelatorio() {
-        String sql = """
-                SELECT a.nome AS aluno, d.nome AS disciplina, p.nome AS professor, m.data_matricula
-                FROM matricula m
-                INNER JOIN aluno a ON a.matricula = m.aluno_matricula
-                INNER JOIN disciplina d ON d.codigo = m.disciplina_codigo
-                INNER JOIN professor p ON p.matricula = d.professor_matricula
-                ORDER BY a.nome, d.nome
-                """;
+        String sql = SITUACAO + " ORDER BY a.nome, d.nome";
         try (Connection conexao = conexoes.abrir();
                 PreparedStatement comando = conexao.prepareStatement(sql);
                 ResultSet resultado = comando.executeQuery()) {
-            List<SituacaoAcademica> linhas = new ArrayList<>();
-            while (resultado.next()) {
-                linhas.add(new SituacaoAcademica(
-                        resultado.getString("aluno"),
-                        resultado.getString("disciplina"),
-                        resultado.getString("professor"),
-                        resultado.getDate("data_matricula").toLocalDate()));
-            }
-            return linhas;
+            return mapearSituacao(resultado);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
+    }
+
+    public List<SituacaoAcademica> listarSituacaoDoAluno(String alunoMatricula) {
+        String sql = SITUACAO + " WHERE m.aluno_matricula = ? ORDER BY d.nome";
+        try (Connection conexao = conexoes.abrir();
+                PreparedStatement comando = conexao.prepareStatement(sql)) {
+            comando.setString(1, alunoMatricula);
+            try (ResultSet resultado = comando.executeQuery()) {
+                return mapearSituacao(resultado);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    private List<SituacaoAcademica> mapearSituacao(ResultSet resultado) throws SQLException {
+        List<SituacaoAcademica> linhas = new ArrayList<>();
+        while (resultado.next()) {
+            linhas.add(new SituacaoAcademica(
+                    resultado.getString("aluno"),
+                    resultado.getString("disciplina"),
+                    resultado.getString("professor"),
+                    resultado.getDate("data_matricula").toLocalDate()));
+        }
+        return linhas;
     }
 }

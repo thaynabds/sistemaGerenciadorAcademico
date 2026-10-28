@@ -24,14 +24,14 @@ public final class MenuDisciplinas {
             ui.imprimir("        DISCIPLINAS");
             ui.imprimir("=================================");
             ui.imprimir("");
-            ui.imprimir("1 - Cadastrar");
-            ui.imprimir("2 - Listar");
-            ui.imprimir("3 - Buscar");
-            ui.imprimir("4 - Alterar");
-            ui.imprimir("5 - Excluir");
+            ui.imprimir("1 - Cadastrar disciplina");
+            ui.imprimir("2 - Listar disciplinas");
+            ui.imprimir("3 - Buscar disciplina");
+            ui.imprimir("4 - Alterar disciplina");
+            ui.imprimir("5 - Excluir disciplina");
             ui.imprimir("0 - Voltar");
             ui.imprimir("");
-            opcao = ui.ler("Escolha: ");
+            opcao = ui.ler("Escolha uma opção: ");
             switch (opcao) {
                 case "1" -> ui.executar(this::cadastrar);
                 case "2" -> ui.executar(this::listar);

@@ -91,6 +91,19 @@ public class DisciplinaDAO {
         }
     }
 
+    public boolean existePorProfessor(String professorMatricula) {
+        String sql = "SELECT 1 FROM disciplina WHERE professor_matricula = ?";
+        try (Connection conexao = conexoes.abrir();
+                PreparedStatement comando = conexao.prepareStatement(sql)) {
+            comando.setString(1, professorMatricula);
+            try (ResultSet resultado = comando.executeQuery()) {
+                return resultado.next();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
     public boolean excluir(String codigo) {
         String sql = "DELETE FROM disciplina WHERE codigo = ?";
         try (Connection conexao = conexoes.abrir();

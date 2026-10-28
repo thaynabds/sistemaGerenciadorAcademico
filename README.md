@@ -26,6 +26,72 @@ Regras aplicadas na camada `service`:
 - o aluno não pode ser matriculado duas vezes na mesma disciplina;
 - não exclui aluno com matrícula, professor com disciplina ou disciplina com alunos matriculados (mostra uma mensagem explicando o motivo).
 
+## Demonstração
+
+Saída real do sistema rodando no PostgreSQL com os dados iniciais do [`database.sql`](database.sql).
+
+**Matrículas › 5 - Consultar situação acadêmica** (JOIN entre `matricula`, `aluno`, `disciplina` e `professor`):
+
+```text
+=================================
+    SITUAÇÃO ACADÊMICA
+=================================
+
+Matrícula do aluno: A001
+
+Aluno: Ana Beatriz
+Idade: 20
+Celular: 81988880001
+Total de disciplinas: 2
+
+Disciplina             Professor            Data
+----------------------------------------------------------
+Banco de Dados         Fernanda Lima        28/10/2026
+Programação Java       Carlos Andrade       28/10/2026
+```
+
+**Matrículas › 6 - Relatório completo**:
+
+```text
+Aluno                Disciplina             Professor            Data
+----------------------------------------------------------------------
+Ana Beatriz          Banco de Dados         Fernanda Lima        28/10/2026
+Ana Beatriz          Programação Java       Carlos Andrade       28/10/2026
+Bruno Costa          Programação Java       Carlos Andrade       28/10/2026
+Camila Souza         Orientação a Objetos   Carlos Andrade       28/10/2026
+```
+
+**Matrículas › 4 - Alunos da disciplina**:
+
+```text
+Código da disciplina: JAVA01
+
+Disciplina: Programação Java
+Professor: Carlos Andrade
+
+Alunos matriculados:
+
+A001 - Ana Beatriz
+A002 - Bruno Costa
+```
+
+**Alunos › 5 - Excluir aluno** com matrícula ativa (a regra do service protege a chave estrangeira):
+
+```text
+Matrícula: A001
+Não é possível excluir o aluno: ele possui matrículas. Cancele as matrículas primeiro.
+```
+
+### Testar em 1 minuto, sem instalar PostgreSQL
+
+Baixe o `sistema-academico.jar` na [Release v1.0](https://github.com/thaynabds/sistemaGerenciadorAcademico/releases/tag/v1.0) e rode com o banco H2 em memória (precisa apenas do Java 21):
+
+```bash
+DB_PROFILE=h2 java -jar sistema-academico.jar
+```
+
+No Windows (PowerShell): `$env:DB_PROFILE="h2"; java -jar sistema-academico.jar`. Os dados somem ao fechar; para o uso completo, configure o PostgreSQL como explicado abaixo.
+
 ## Tecnologias
 
 - Java 21

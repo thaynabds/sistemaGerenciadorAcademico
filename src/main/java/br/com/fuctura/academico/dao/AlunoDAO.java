@@ -79,10 +79,12 @@ public class AlunoDAO {
     }
 
     public List<Aluno> buscarPorNome(String nome) {
-        String sql = "SELECT matricula, nome, idade, celular FROM aluno WHERE nome ILIKE ? ORDER BY nome";
+        String sql = "SELECT matricula, nome, idade, celular FROM aluno WHERE nome ILIKE ? ESCAPE '\\' ORDER BY nome";
+        // % e _ digitados pelo usuário são tratados como texto, não como curinga do LIKE
+        String termo = nome.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_");
         try (Connection conexao = conexoes.abrir();
                 PreparedStatement comando = conexao.prepareStatement(sql)) {
-            comando.setString(1, "%" + nome + "%");
+            comando.setString(1, "%" + termo + "%");
             try (ResultSet resultado = comando.executeQuery()) {
                 List<Aluno> alunos = new ArrayList<>();
                 while (resultado.next()) {

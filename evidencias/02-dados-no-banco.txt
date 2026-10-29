@@ -1,0 +1,83 @@
+$ psql -h localhost -p 5544 -U postgres -d academico
+
+SELECT version();
+                                                                 version                                                                  
+------------------------------------------------------------------------------------------------------------------------------------------
+ PostgreSQL 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit
+(1 row)
+
+
+>>> Tabelas criadas no banco "academico"
+           List of relations
+ Schema |    Name    | Type  |  Owner   
+--------+------------+-------+----------
+ public | aluno      | table | postgres
+ public | disciplina | table | postgres
+ public | matricula  | table | postgres
+ public | professor  | table | postgres
+(4 rows)
+
+>>> SELECT * FROM professor;
+SELECT * FROM professor ORDER BY matricula;
+      nome      |  telefone   | matricula 
+----------------+-------------+-----------
+ Carlos Andrade | 81999990001 | P001
+ Fernanda Lima  | 81999990002 | P002
+(2 rows)
+
+>>> SELECT * FROM disciplina;
+SELECT * FROM disciplina ORDER BY codigo;
+         nome         | carga_horaria | codigo | professor_matricula 
+----------------------+---------------+--------+---------------------
+ Banco de Dados       | 60            | BD01   | P002
+ Programação Java     | 80            | JAVA01 | P001
+ Orientação a Objetos | 40            | POO01  | P001
+(3 rows)
+
+>>> SELECT * FROM aluno ORDER BY nome;
+SELECT * FROM aluno ORDER BY nome;
+ matricula |     nome     | idade |   celular   
+-----------+--------------+-------+-------------
+ A001      | Ana Beatriz  |    20 | 81988880001
+ A002      | Bruno Costa  |    23 | 81988880002
+ A003      | Camila Souza |    19 | 81988880003
+(3 rows)
+
+>>> SELECT * FROM matricula;
+SELECT * FROM matricula ORDER BY id;
+ id | data_matricula | aluno_matricula | disciplina_codigo 
+----+----------------+-----------------+-------------------
+  1 | 2026-10-29     | A001            | JAVA01
+  2 | 2026-10-29     | A001            | BD01
+  3 | 2026-10-29     | A002            | JAVA01
+  4 | 2026-10-29     | A003            | POO01
+(4 rows)
+
+>>> JOIN com 4 tabelas: aluno + matricula + disciplina + professor
+SELECT a.nome AS aluno, d.nome AS disciplina, p.nome AS professor, m.data_matricula
+FROM matricula m
+INNER JOIN aluno a ON a.matricula = m.aluno_matricula
+INNER JOIN disciplina d ON d.codigo = m.disciplina_codigo
+INNER JOIN professor p ON p.matricula = d.professor_matricula
+ORDER BY a.nome, d.nome;
+    aluno     |      disciplina      |   professor    | data_matricula 
+--------------+----------------------+----------------+----------------
+ Ana Beatriz  | Banco de Dados       | Fernanda Lima  | 2026-10-29
+ Ana Beatriz  | Programação Java     | Carlos Andrade | 2026-10-29
+ Bruno Costa  | Programação Java     | Carlos Andrade | 2026-10-29
+ Camila Souza | Orientação a Objetos | Carlos Andrade | 2026-10-29
+(4 rows)
+
+>>> Chaves estrangeiras
+SELECT tc.table_name AS tabela, kcu.column_name AS coluna, ccu.table_name AS referencia
+FROM information_schema.table_constraints tc
+JOIN information_schema.key_column_usage kcu ON kcu.constraint_name = tc.constraint_name
+JOIN information_schema.constraint_column_usage ccu ON ccu.constraint_name = tc.constraint_name
+WHERE tc.constraint_type = 'FOREIGN KEY' ORDER BY 1, 2;
+   tabela   |       coluna        | referencia 
+------------+---------------------+------------
+ disciplina | professor_matricula | professor
+ matricula  | aluno_matricula     | aluno
+ matricula  | disciplina_codigo   | disciplina
+(3 rows)
+

@@ -17,10 +17,10 @@ public class AlunoService {
     }
 
     public void cadastrar(Aluno aluno) {
-        aluno.setMatricula(texto(aluno.getMatricula(), "Informe a matrícula."));
-        aluno.setNome(texto(aluno.getNome(), "Informe o nome."));
-        aluno.setCelular(texto(aluno.getCelular(), "Informe o celular."));
-        if (aluno.getIdade() == null || aluno.getIdade() < 1) {
+        aluno.setMatricula(texto(aluno.getMatricula(), "Informe a matrícula.", 255));
+        aluno.setNome(texto(aluno.getNome(), "Informe o nome.", 100));
+        aluno.setCelular(texto(aluno.getCelular(), "Informe o celular.", 15));
+        if (aluno.getIdade() == null || aluno.getIdade() < 1 || aluno.getIdade() > 150) {
             throw new IllegalArgumentException("Informe uma idade válida.");
         }
         if (alunoDao.buscarPorMatricula(aluno.getMatricula()).isPresent()) {
@@ -30,10 +30,10 @@ public class AlunoService {
     }
 
     public void alterar(Aluno aluno) {
-        aluno.setMatricula(texto(aluno.getMatricula(), "Informe a matrícula."));
-        aluno.setNome(texto(aluno.getNome(), "Informe o nome."));
-        aluno.setCelular(texto(aluno.getCelular(), "Informe o celular."));
-        if (aluno.getIdade() == null || aluno.getIdade() < 1) {
+        aluno.setMatricula(texto(aluno.getMatricula(), "Informe a matrícula.", 255));
+        aluno.setNome(texto(aluno.getNome(), "Informe o nome.", 100));
+        aluno.setCelular(texto(aluno.getCelular(), "Informe o celular.", 15));
+        if (aluno.getIdade() == null || aluno.getIdade() < 1 || aluno.getIdade() > 150) {
             throw new IllegalArgumentException("Informe uma idade válida.");
         }
         if (!alunoDao.atualizar(aluno)) {
@@ -46,7 +46,7 @@ public class AlunoService {
     }
 
     public List<Aluno> buscarPorNome(String nome) {
-        return alunoDao.buscarPorNome(texto(nome, "Informe o nome."));
+        return alunoDao.buscarPorNome(texto(nome, "Informe o nome.", 100));
     }
 
     public Aluno buscar(String matricula) {
@@ -66,9 +66,17 @@ public class AlunoService {
     }
 
     private String texto(String valor, String mensagem) {
+        return texto(valor, mensagem, Integer.MAX_VALUE);
+    }
+
+    private String texto(String valor, String mensagem, int tamanhoMaximo) {
         if (valor == null || valor.isBlank()) {
             throw new IllegalArgumentException(mensagem);
         }
-        return valor.trim();
+        String limpo = valor.trim();
+        if (limpo.length() > tamanhoMaximo) {
+            throw new IllegalArgumentException("Use no máximo " + tamanhoMaximo + " caracteres. " + mensagem);
+        }
+        return limpo;
     }
 }

@@ -55,8 +55,8 @@ public class DisciplinaService {
     }
 
     private void validar(Disciplina disciplina) {
-        disciplina.setCodigo(texto(disciplina.getCodigo(), "Informe o código."));
-        disciplina.setNome(texto(disciplina.getNome(), "Informe o nome."));
+        disciplina.setCodigo(texto(disciplina.getCodigo(), "Informe o código.", 32));
+        disciplina.setNome(texto(disciplina.getNome(), "Informe o nome.", 100));
         disciplina.setCargaHoraria(texto(disciplina.getCargaHoraria(), "Informe a carga horária."));
         if (!disciplina.getCargaHoraria().matches("[1-9]\\d{0,3}")) {
             throw new IllegalArgumentException("A carga horária deve ser um número inteiro positivo.");
@@ -68,9 +68,17 @@ public class DisciplinaService {
     }
 
     private String texto(String valor, String mensagem) {
+        return texto(valor, mensagem, Integer.MAX_VALUE);
+    }
+
+    private String texto(String valor, String mensagem, int tamanhoMaximo) {
         if (valor == null || valor.isBlank()) {
             throw new IllegalArgumentException(mensagem);
         }
-        return valor.trim();
+        String limpo = valor.trim();
+        if (limpo.length() > tamanhoMaximo) {
+            throw new IllegalArgumentException("Use no máximo " + tamanhoMaximo + " caracteres. " + mensagem);
+        }
+        return limpo;
     }
 }

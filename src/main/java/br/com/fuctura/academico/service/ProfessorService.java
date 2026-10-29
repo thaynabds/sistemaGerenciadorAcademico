@@ -17,9 +17,9 @@ public class ProfessorService {
     }
 
     public void cadastrar(Professor professor) {
-        professor.setMatricula(texto(professor.getMatricula(), "Informe a matrícula."));
-        professor.setNome(texto(professor.getNome(), "Informe o nome."));
-        professor.setTelefone(texto(professor.getTelefone(), "Informe o telefone."));
+        professor.setMatricula(texto(professor.getMatricula(), "Informe a matrícula.", 32));
+        professor.setNome(texto(professor.getNome(), "Informe o nome.", 100));
+        professor.setTelefone(texto(professor.getTelefone(), "Informe o telefone.", 15));
         if (professorDao.buscarPorMatricula(professor.getMatricula()).isPresent()) {
             throw new IllegalArgumentException("Já existe um professor com essa matrícula.");
         }
@@ -27,9 +27,9 @@ public class ProfessorService {
     }
 
     public void alterar(Professor professor) {
-        professor.setMatricula(texto(professor.getMatricula(), "Informe a matrícula."));
-        professor.setNome(texto(professor.getNome(), "Informe o nome."));
-        professor.setTelefone(texto(professor.getTelefone(), "Informe o telefone."));
+        professor.setMatricula(texto(professor.getMatricula(), "Informe a matrícula.", 32));
+        professor.setNome(texto(professor.getNome(), "Informe o nome.", 100));
+        professor.setTelefone(texto(professor.getTelefone(), "Informe o telefone.", 15));
         if (!professorDao.atualizar(professor)) {
             throw new IllegalArgumentException("Professor não encontrado.");
         }
@@ -56,9 +56,17 @@ public class ProfessorService {
     }
 
     private String texto(String valor, String mensagem) {
+        return texto(valor, mensagem, Integer.MAX_VALUE);
+    }
+
+    private String texto(String valor, String mensagem, int tamanhoMaximo) {
         if (valor == null || valor.isBlank()) {
             throw new IllegalArgumentException(mensagem);
         }
-        return valor.trim();
+        String limpo = valor.trim();
+        if (limpo.length() > tamanhoMaximo) {
+            throw new IllegalArgumentException("Use no máximo " + tamanhoMaximo + " caracteres. " + mensagem);
+        }
+        return limpo;
     }
 }

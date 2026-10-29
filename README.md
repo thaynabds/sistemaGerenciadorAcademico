@@ -28,6 +28,10 @@ Regras aplicadas na camada `service`:
 
 ## Demonstração
 
+> 📂 **[Evidências do funcionamento no banco de dados](evidencias/README.md)**: dados de exemplo cadastrados pelo sistema e consultados direto no PostgreSQL, com imagens e a sessão completa.
+
+![Dados gravados no PostgreSQL](evidencias/03-dados-no-postgresql.png)
+
 Saída real do sistema rodando no PostgreSQL com os dados iniciais do [`database.sql`](database.sql).
 
 **Matrículas › 5 - Consultar situação acadêmica** (JOIN entre `matricula`, `aluno`, `disciplina` e `professor`):

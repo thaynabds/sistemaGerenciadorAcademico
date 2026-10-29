@@ -1,0 +1,622 @@
+
+=================================
+     SISTEMA ACADÊMICO
+=================================
+
+1 - Alunos
+2 - Professores
+3 - Disciplinas
+4 - Matrículas
+0 - Sair
+
+Escolha uma opção: 2
+
+=================================
+        PROFESSORES
+=================================
+
+1 - Cadastrar professor
+2 - Listar professores
+3 - Buscar professor
+4 - Alterar professor
+5 - Excluir professor
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+    CADASTRAR PROFESSOR
+=================================
+
+Matrícula: P001
+Nome: Carlos Andrade
+Telefone: 81999990001
+
+Professor cadastrado com sucesso!
+
+=================================
+        PROFESSORES
+=================================
+
+1 - Cadastrar professor
+2 - Listar professores
+3 - Buscar professor
+4 - Alterar professor
+5 - Excluir professor
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+    CADASTRAR PROFESSOR
+=================================
+
+Matrícula: P002
+Nome: Fernanda Lima
+Telefone: 81999990002
+
+Professor cadastrado com sucesso!
+
+=================================
+        PROFESSORES
+=================================
+
+1 - Cadastrar professor
+2 - Listar professores
+3 - Buscar professor
+4 - Alterar professor
+5 - Excluir professor
+0 - Voltar
+
+Escolha uma opção: 2
+
+=================================
+     LISTA DE PROFESSORES
+=================================
+
+P001 - Carlos Andrade
+P002 - Fernanda Lima
+
+Pressione ENTER para continuar...
+
+=================================
+        PROFESSORES
+=================================
+
+1 - Cadastrar professor
+2 - Listar professores
+3 - Buscar professor
+4 - Alterar professor
+5 - Excluir professor
+0 - Voltar
+
+Escolha uma opção: 0
+
+=================================
+     SISTEMA ACADÊMICO
+=================================
+
+1 - Alunos
+2 - Professores
+3 - Disciplinas
+4 - Matrículas
+0 - Sair
+
+Escolha uma opção: 3
+
+=================================
+        DISCIPLINAS
+=================================
+
+1 - Cadastrar disciplina
+2 - Listar disciplinas
+3 - Buscar disciplina
+4 - Alterar disciplina
+5 - Excluir disciplina
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+    CADASTRAR DISCIPLINA
+=================================
+
+Código: JAVA01
+Nome: Programação Java
+Carga Horária: 80
+
+Professor responsável:
+
+P001 - Carlos Andrade
+P002 - Fernanda Lima
+
+Matrícula do professor: P001
+
+Disciplina cadastrada com sucesso!
+
+=================================
+        DISCIPLINAS
+=================================
+
+1 - Cadastrar disciplina
+2 - Listar disciplinas
+3 - Buscar disciplina
+4 - Alterar disciplina
+5 - Excluir disciplina
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+    CADASTRAR DISCIPLINA
+=================================
+
+Código: BD01
+Nome: Banco de Dados
+Carga Horária: 60
+
+Professor responsável:
+
+P001 - Carlos Andrade
+P002 - Fernanda Lima
+
+Matrícula do professor: P002
+
+Disciplina cadastrada com sucesso!
+
+=================================
+        DISCIPLINAS
+=================================
+
+1 - Cadastrar disciplina
+2 - Listar disciplinas
+3 - Buscar disciplina
+4 - Alterar disciplina
+5 - Excluir disciplina
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+    CADASTRAR DISCIPLINA
+=================================
+
+Código: POO01
+Nome: Orientação a Objetos
+Carga Horária: 40
+
+Professor responsável:
+
+P001 - Carlos Andrade
+P002 - Fernanda Lima
+
+Matrícula do professor: P001
+
+Disciplina cadastrada com sucesso!
+
+=================================
+        DISCIPLINAS
+=================================
+
+1 - Cadastrar disciplina
+2 - Listar disciplinas
+3 - Buscar disciplina
+4 - Alterar disciplina
+5 - Excluir disciplina
+0 - Voltar
+
+Escolha uma opção: 2
+
+=================================
+      LISTA DE DISCIPLINAS
+=================================
+
+BD01 - Banco de Dados
+POO01 - Orientação a Objetos
+JAVA01 - Programação Java
+
+Pressione ENTER para continuar...
+
+=================================
+        DISCIPLINAS
+=================================
+
+1 - Cadastrar disciplina
+2 - Listar disciplinas
+3 - Buscar disciplina
+4 - Alterar disciplina
+5 - Excluir disciplina
+0 - Voltar
+
+Escolha uma opção: 0
+
+=================================
+     SISTEMA ACADÊMICO
+=================================
+
+1 - Alunos
+2 - Professores
+3 - Disciplinas
+4 - Matrículas
+0 - Sair
+
+Escolha uma opção: 1
+
+=================================
+          ALUNOS
+=================================
+
+1 - Cadastrar aluno
+2 - Listar alunos (ordenados por nome)
+3 - Buscar aluno
+4 - Alterar aluno
+5 - Excluir aluno
+6 - Pesquisar aluno por nome
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+      CADASTRAR ALUNO
+=================================
+
+Matrícula: A001
+Nome: Ana Beatriz
+Idade: 20
+Celular: 81988880001
+
+Aluno cadastrado com sucesso!
+
+=================================
+          ALUNOS
+=================================
+
+1 - Cadastrar aluno
+2 - Listar alunos (ordenados por nome)
+3 - Buscar aluno
+4 - Alterar aluno
+5 - Excluir aluno
+6 - Pesquisar aluno por nome
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+      CADASTRAR ALUNO
+=================================
+
+Matrícula: A002
+Nome: Bruno Costa
+Idade: 23
+Celular: 81988880002
+
+Aluno cadastrado com sucesso!
+
+=================================
+          ALUNOS
+=================================
+
+1 - Cadastrar aluno
+2 - Listar alunos (ordenados por nome)
+3 - Buscar aluno
+4 - Alterar aluno
+5 - Excluir aluno
+6 - Pesquisar aluno por nome
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+      CADASTRAR ALUNO
+=================================
+
+Matrícula: A003
+Nome: Camila Souza
+Idade: 19
+Celular: 81988880003
+
+Aluno cadastrado com sucesso!
+
+=================================
+          ALUNOS
+=================================
+
+1 - Cadastrar aluno
+2 - Listar alunos (ordenados por nome)
+3 - Buscar aluno
+4 - Alterar aluno
+5 - Excluir aluno
+6 - Pesquisar aluno por nome
+0 - Voltar
+
+Escolha uma opção: 2
+
+=================================
+        LISTA DE ALUNOS
+=================================
+
+A001 - Ana Beatriz
+A002 - Bruno Costa
+A003 - Camila Souza
+
+Pressione ENTER para continuar...
+
+=================================
+          ALUNOS
+=================================
+
+1 - Cadastrar aluno
+2 - Listar alunos (ordenados por nome)
+3 - Buscar aluno
+4 - Alterar aluno
+5 - Excluir aluno
+6 - Pesquisar aluno por nome
+0 - Voltar
+
+Escolha uma opção: 6
+
+=================================
+     PESQUISAR POR NOME
+=================================
+
+Nome: cos
+
+Matrícula: A002
+Nome: Bruno Costa
+Idade: 23
+Celular: 81988880002
+
+=================================
+          ALUNOS
+=================================
+
+1 - Cadastrar aluno
+2 - Listar alunos (ordenados por nome)
+3 - Buscar aluno
+4 - Alterar aluno
+5 - Excluir aluno
+6 - Pesquisar aluno por nome
+0 - Voltar
+
+Escolha uma opção: 0
+
+=================================
+     SISTEMA ACADÊMICO
+=================================
+
+1 - Alunos
+2 - Professores
+3 - Disciplinas
+4 - Matrículas
+0 - Sair
+
+Escolha uma opção: 4
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+      MATRICULAR ALUNO
+=================================
+
+Matrícula do aluno: A001
+
+Disciplinas disponíveis:
+
+BD01 - Banco de Dados
+POO01 - Orientação a Objetos
+JAVA01 - Programação Java
+
+Código da disciplina: JAVA01
+
+Matrícula realizada com sucesso!
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+      MATRICULAR ALUNO
+=================================
+
+Matrícula do aluno: A001
+
+Disciplinas disponíveis:
+
+BD01 - Banco de Dados
+POO01 - Orientação a Objetos
+JAVA01 - Programação Java
+
+Código da disciplina: BD01
+
+Matrícula realizada com sucesso!
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+      MATRICULAR ALUNO
+=================================
+
+Matrícula do aluno: A002
+
+Disciplinas disponíveis:
+
+BD01 - Banco de Dados
+POO01 - Orientação a Objetos
+JAVA01 - Programação Java
+
+Código da disciplina: JAVA01
+
+Matrícula realizada com sucesso!
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 1
+
+=================================
+      MATRICULAR ALUNO
+=================================
+
+Matrícula do aluno: A003
+
+Disciplinas disponíveis:
+
+BD01 - Banco de Dados
+POO01 - Orientação a Objetos
+JAVA01 - Programação Java
+
+Código da disciplina: POO01
+
+Matrícula realizada com sucesso!
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 5
+
+=================================
+    SITUAÇÃO ACADÊMICA
+=================================
+
+Matrícula do aluno: A001
+
+Aluno: Ana Beatriz
+Idade: 20
+Celular: 81988880001
+Total de disciplinas: 2
+
+Disciplina             Professor            Data
+----------------------------------------------------------
+Banco de Dados         Fernanda Lima        29/10/2026
+Programação Java       Carlos Andrade       29/10/2026
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 4
+
+=================================
+   ALUNOS DA DISCIPLINA
+=================================
+
+Código da disciplina: JAVA01
+
+Disciplina: Programação Java
+Professor: Carlos Andrade
+
+Alunos matriculados:
+
+A001 - Ana Beatriz
+A002 - Bruno Costa
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 6
+
+=================================
+      RELATÓRIO COMPLETO
+=================================
+
+Aluno                Disciplina             Professor            Data
+----------------------------------------------------------------------
+Ana Beatriz          Banco de Dados         Fernanda Lima        29/10/2026
+Ana Beatriz          Programação Java       Carlos Andrade       29/10/2026
+Bruno Costa          Programação Java       Carlos Andrade       29/10/2026
+Camila Souza         Orientação a Objetos   Carlos Andrade       29/10/2026
+
+=================================
+         MATRÍCULAS
+=================================
+
+1 - Matricular aluno
+2 - Cancelar matrícula
+3 - Disciplinas do aluno
+4 - Alunos da disciplina
+5 - Consultar situação acadêmica
+6 - Relatório completo
+0 - Voltar
+
+Escolha uma opção: 0
+
+=================================
+     SISTEMA ACADÊMICO
+=================================
+
+1 - Alunos
+2 - Professores
+3 - Disciplinas
+4 - Matrículas
+0 - Sair
+
+Escolha uma opção: 0
